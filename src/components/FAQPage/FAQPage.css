@@ -1,0 +1,26 @@
+.FAQPage {
+  background: linear-gradient(to right, #a66a4e, #7a4b3b);
+}
+
+.FAQPage .pageWrapper {
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.FAQPage__header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.FAQPage__header h1,
+.FAQPage__header h3,
+.FAQPage__header i {
+  color: #e9b478;
+}
+
+.FAQPage__content__title {
+  font-size: 2em;
+  color: #e9b478;
+  margin: 35px 0;
+}

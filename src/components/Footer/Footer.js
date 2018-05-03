@@ -22,7 +22,9 @@ class Footer extends Component {
                 <Link to="/faq">FAQ</Link>
               </li>
               <li>
-                <Link to="/press">Press</Link>
+                <a href="https://www.google.com/search?q=crypto+currency" target="_blank" rel="noopener noreferrer">
+                  Press
+                </a>
               </li>
               <li>
                 <Link to="/tos">Terms of Service</Link>
