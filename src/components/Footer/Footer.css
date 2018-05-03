@@ -1,0 +1,31 @@
+.Footer {
+  background: #1b1c1d;
+}
+
+.Footer__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+
+.Footer__section {
+  min-width: 200px;
+  color: white;
+  padding: 15px;
+  flex: 1;
+}
+
+.Footer__section img {
+  max-width: 100%;
+}
+
+.Footer__section ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.Footer__section ul li {
+  padding: 3px 0;
+}

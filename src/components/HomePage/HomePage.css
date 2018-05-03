@@ -45,32 +45,38 @@
   margin: 0 auto;
   padding: 50px 30px;
   color: white;
+  text-align: justify;
 }
 
 .Homepage__section h1 {
-  color: black;
+  color: #e9b478;
+  text-transform: uppercase;
 }
 
 .Homepage__section:nth-child(even) {
-  background: linear-gradient(to right, #00c6ff, #0072ff);
+  background: linear-gradient(to right, #533341);
 }
 
 .Homepage__section:nth-child(odd) {
-  background: linear-gradient(to right, #fe8c00, #f83600);
+  background: linear-gradient(to right, #a66a4e, #7a4b3b);
 }
 
 .Homepage__section__description {
   flex: 1 1 300px;
-  padding: 20px;
+  padding: 30px 50px;
 }
 
 .Homepage__section__image {
-  flex: 1 1 500px;
+  flex: 1 1 300px;
   align-self: center;
 }
 
 .Homepage__section__image img {
   max-width: 100%;
+  padding: 15px 15px;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+  transform: rotate(-7deg);
 }
 
 .Homepage__section__final {

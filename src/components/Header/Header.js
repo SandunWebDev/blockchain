@@ -16,7 +16,7 @@ class Header extends Component {
             <ul>
               <li>MARKETPLACE</li>
               <li>MY&nbsp;ASSETS</li>
-              <li>ONLINE</li>
+              <li style={{display:"none"}}>ONLINE</li>
               <li>
                 <img src={offlineLogo} alt="" />
               </li>
