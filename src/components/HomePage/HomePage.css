@@ -12,8 +12,7 @@
   align-items: center;
 }
 
-.HomePage__wrapper {
-  max-width: 1000px;
+.HomePage__splash__wrapper {
   text-align: center;
   color: white;
   letter-spacing: 2px;
@@ -40,7 +39,44 @@
   right: 0;
 }
 
-.Homepage__section1 {
-  height: 500px;
-  background: red;
+.Homepage__section .pageWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 50px 30px;
+  color: white;
+}
+
+.Homepage__section h1 {
+  color: black;
+}
+
+.Homepage__section:nth-child(even) {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+}
+
+.Homepage__section:nth-child(odd) {
+  background: linear-gradient(to right, #fe8c00, #f83600);
+}
+
+.Homepage__section__description {
+  flex: 1 1 300px;
+  padding: 20px;
+}
+
+.Homepage__section__image {
+  flex: 1 1 500px;
+  align-self: center;
+}
+
+.Homepage__section__image img {
+  max-width: 100%;
+}
+
+.Homepage__section__final {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
