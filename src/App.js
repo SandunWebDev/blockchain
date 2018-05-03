@@ -4,6 +4,8 @@ import { Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import HomePage from "./components/HomePage/HomePage";
+import HowPage from "./components/HowPage/HowPage";
+
 import "./App.css";
 
 class App extends Component {
@@ -12,6 +14,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Route exact path="/" component={HomePage} />
+        <Route exact path="/how" component={HowPage} />
         <Footer />
       </div>
     );

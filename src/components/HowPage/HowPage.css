@@ -1,0 +1,10 @@
+.HowPage .pageWrapper {
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.HowPage__header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}

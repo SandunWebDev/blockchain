@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import logo from "../../assets/logo.png";
 import offlineLogo from "../../assets/offlineLogo.svg";
@@ -7,8 +7,15 @@ import "./Header.css";
 
 class Header extends Component {
   render() {
+    console.log(this.props);
+    const headerStyle = {
+      background: this.props.location.pathname === "/" ? "rgba(62, 34, 46, 0.3)" : "rgba(62, 34, 46, 1)",
+      position: this.props.location.pathname === "/" ? "absolute" : "static"
+    };
+
     return (
-      <div className="Header">
+      <div className="Header" style={headerStyle}>
+        {/* <div className="Header"> */}
         <div className="Header__wrapper pageWrapper">
           <div className="Header__logo">
             <Link to="/">
@@ -35,4 +42,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);
