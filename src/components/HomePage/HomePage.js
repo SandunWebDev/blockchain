@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import { Button, Card, Icon } from "semantic-ui-react";
 
@@ -16,16 +17,26 @@ class HomePage extends Component {
           <div className="HomePage__splash__wrapper pageWrapper">
             <h1 className="Homepage__splash__title">OWN A PIECE OF THE MARS</h1>
             <div className="Homepage__splash__subtitle">ON THE BLOCKCHAIN</div>
-            <Button color="teal" icon labelPosition="right" className="Homepage__splash__button">
-              <Icon name="mars" />
-              ENTER
-            </Button>
+            <Link to="/dapp">
+              <Button color="teal" icon labelPosition="right" className="Homepage__splash__button">
+                <Icon name="mars" />
+                ENTER
+              </Button>
+            </Link>
             <div className="Homepage__splash__follow">
               <h4>FOLLLOW US ON</h4>
-              <Button size="tiny" circular color="facebook" icon="facebook" />
-              <Button size="tiny" circular color="twitter" icon="twitter" />
-              <Button size="tiny" circular color="linkedin" icon="linkedin" />
-              <Button size="tiny" circular color="google plus" icon="google plus" />
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                <Button size="tiny" circular color="facebook" icon="facebook" />
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                <Button size="tiny" circular color="twitter" icon="twitter" />
+              </a>
+              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+                <Button size="tiny" circular color="linkedin" icon="linkedin" />
+              </a>
+              <a href="https://plus.google.com" target="_blank" rel="noopener noreferrer">
+                <Button size="tiny" circular color="google plus" icon="google plus" />
+              </a>
             </div>
           </div>
         </div>
@@ -35,8 +46,8 @@ class HomePage extends Component {
               <h1>Mars Domination on the Blockchain</h1>
               <p>Buy Colonies as Smart Contracts using blockchain technology and take over the mars map.</p>
               <p>
-                Be the emperor of the mars and own Colonies such as The North Terra, Acdial Terra or Ididis Torrum as Smart
-                Contracts on the Ethereum Blockchain.
+                Be the emperor of the mars and own Colonies such as The North Terra, Acdial Terra or Ididis Torrum as
+                Smart Contracts on the Ethereum Blockchain.
               </p>
               <p>
                 Crypto Mars is an interactive game that lets anyone buy and own Colonies as Smart Contracts on the
@@ -66,9 +77,9 @@ class HomePage extends Component {
                 Colonies, colony owners will start to see real benefit of owning Colonies.
               </p>
               <p>
-                Colonies will also allow new players and beginners to get into the mars of blockchain gaming and
-                Crypto Mars with a far lower threshold, while at the same time get to experience the fast-paced and
-                exciting gameplay of trading collectibles.
+                Colonies will also allow new players and beginners to get into the mars of blockchain gaming and Crypto
+                Mars with a far lower threshold, while at the same time get to experience the fast-paced and exciting
+                gameplay of trading collectibles.
               </p>
             </div>
           </div>
@@ -79,14 +90,14 @@ class HomePage extends Component {
               <h1>Most Player Friendly Value increase</h1>
               <p>
                 Crypto Mars has by far the most player friendly value increase model with the absolute lowest
-                commissions. Compared to other collectible games that take massive commisions on each purchase,
-                Crypto Mars value the players and the game. If you don't believe it, check it our for yourself by
-                reading our Smart Contract and comparing it with others.
+                commissions. Compared to other collectible games that take massive commisions on each purchase, Crypto
+                Mars value the players and the game. If you don't believe it, check it our for yourself by reading our
+                Smart Contract and comparing it with others.
               </p>
               <p>
-                In Crypto Mars you can conquer any available colony on the map. Any other player can also purchase
-                and conquer your Colonies as long as they pay up to double the amount of what you paid to conquer the
-                colony in the first place.
+                In Crypto Mars you can conquer any available colony on the map. Any other player can also purchase and
+                conquer your Colonies as long as they pay up to double the amount of what you paid to conquer the colony
+                in the first place.
               </p>
               <p>
                 The new price including the profit is then transferred back to the previous owner of the colony
@@ -139,16 +150,16 @@ class HomePage extends Component {
             <div className="Homepage__section__description">
               <h1>Take Map Control</h1>
               <p>
-                Crypto Mars runs on the Ethereum blockchain. Each colony is linked to one single Smart Contract
-                Token on the game’s blockchain.
+                Crypto Mars runs on the Ethereum blockchain. Each colony is linked to one single Smart Contract Token on
+                the game’s blockchain.
               </p>
               <p>
                 To conquer (purchase) a colony Smart Contract: Send Ether to the contract using Metamask. As soon as
                 your transaction has been confirmed you (and only you) have ownership of that colony.
               </p>
               <p>
-                To show off your conquest to the rest of the mars, the colony territory on the game’s interactive
-                mars map is colored as the six last characters of your wallet address.
+                To show off your conquest to the rest of the mars, the colony territory on the game’s interactive mars
+                map is colored as the six last characters of your wallet address.
               </p>
               <p>
                 If someone else conquers your colony, you will lose the ownership, but get up to double in return of
@@ -162,10 +173,12 @@ class HomePage extends Component {
             <div className="Homepage__section__final">
               <h1>Start conquering the mars</h1>
               <h2>Be like the romans and own the mars on the Blockchain</h2>
-              <Button color="black" icon labelPosition="right">
-                START YOUR EMPIRE
-                <Icon name="right arrow" />
-              </Button>
+              <Link to="/dapp">
+                <Button color="black" icon labelPosition="right">
+                  START YOUR EMPIRE
+                  <Icon name="right arrow" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

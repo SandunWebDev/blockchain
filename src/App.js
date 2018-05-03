@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Route } from "react-router-dom";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -10,7 +11,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <HomePage />
+        <Route exact path="/" component={HomePage} />
         <Footer />
       </div>
     );

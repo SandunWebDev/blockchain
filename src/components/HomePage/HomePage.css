@@ -45,12 +45,15 @@
   margin: 0 auto;
   padding: 50px 30px;
   color: white;
-  text-align: justify;
 }
 
 .Homepage__section h1 {
   color: #e9b478;
   text-transform: uppercase;
+}
+
+.Homepage__section p {
+  text-align: justify;
 }
 
 .Homepage__section:nth-child(even) {
@@ -85,4 +88,5 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  text-align: center;
 }
