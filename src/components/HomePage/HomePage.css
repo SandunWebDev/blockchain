@@ -1,0 +1,46 @@
+.HomePage {
+}
+
+.Homepage__splash {
+  padding-top: 60px;
+  background-image: url("../../assets/mainBackground.jpg");
+  background-size: cover;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.HomePage__wrapper {
+  max-width: 1000px;
+  text-align: center;
+  color: white;
+  letter-spacing: 2px;
+}
+
+.Homepage__splash__title {
+  font-size: 2.5rem;
+}
+
+.Homepage__splash__subtitle {
+  font-size: 1.3rem;
+  font-style: italic;
+  margin-bottom: 30px;
+}
+
+.Homepage__splash__button {
+  font-size: 1.3rem !important;
+}
+
+.Homepage__splash__follow {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+}
+
+.Homepage__section1 {
+  height: 500px;
+  background: red;
+}
