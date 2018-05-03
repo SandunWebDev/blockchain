@@ -8,30 +8,32 @@ class HowPage extends Component {
       <div className="HowPage">
         <div className="pageWrapper">
           <div className="HowPage__header">
-            <Header as="h1" icon>
+            <Header icon>
               <Icon name="lab" />
-              HOW IT WORKS
+              <h1>HOW IT WORKS</h1>
               <Header.Subheader>
                 <h3>Learn How To Build Your Empire</h3>
               </Header.Subheader>
             </Header>
           </div>
-          <p>Here’s all you need to know about Crypto Mars:</p>
-          <p>
-            Every available colony has one smart contract token. If you buy it, you own it, and your ownership will be
-            visible on our interactive world map as the HEX color of the six last characters in your wallet address.
-          </p>
-          <p>
-            The countries are visible on the Ethereum Blockchain as smart contracts. Meaning, they can only be acquired
-            using Ether. Each colony contract works similarly to a token or a coin and can only be owned by one
-            individual.
-          </p>
-          <p>
-            You can conquer any available colony on the map. Anyone else can also purchase and conquer your owned
-            countries as long as they pay you the new price calculated from the smart contract after you acquired the
-            colony previously.
-          </p>
-          <p>The price increase is hard coded into the smart contract and follow this model:</p>
+          <div className="HowPage__content">
+            <p>Here’s all you need to know about Crypto Mars:</p>
+            <p>
+              Every available colony has one smart contract token. If you buy it, you own it, and your ownership will be
+              visible on our interactive world map as the HEX color of the six last characters in your wallet address.
+            </p>
+            <p>
+              The countries are visible on the Ethereum Blockchain as smart contracts. Meaning, they can only be
+              acquired using Ether. Each colony contract works similarly to a token or a coin and can only be owned by
+              one individual.
+            </p>
+            <p>
+              You can conquer any available colony on the map. Anyone else can also purchase and conquer your owned
+              countries as long as they pay you the new price calculated from the smart contract after you acquired the
+              colony previously.
+            </p>
+            <p>The price increase is hard coded into the smart contract and follow this model:</p>
+          </div>
           <Table celled>
             <Table.Header>
               <Table.Row>

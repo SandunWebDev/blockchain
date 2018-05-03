@@ -1,27 +1,26 @@
-.HowPage {
+.TOSPage {
   background: linear-gradient(to right, #a66a4e, #7a4b3b);
 }
 
-.HowPage .pageWrapper {
+.TOSPage .pageWrapper {
   margin: 0 auto;
   padding: 40px 20px;
 }
 
-.HowPage__header {
+.TOSPage__header {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
-  color: #e9b478 !important;
 }
 
-.HowPage__header h1,
-.HowPage__header h3,
-.HowPage__header i {
+.TOSPage__header h1,
+.TOSPage__header h3,
+.TOSPage__header i {
   color: #e9b478;
 }
 
-.HowPage__content {
-  color: white;
+.TOSPage__content {
   text-align: justify;
   font-size: 1.2rem;
+  color: white;
 }
