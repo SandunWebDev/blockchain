@@ -135,7 +135,7 @@ class HomePage extends Component {
                   <Card.Content description="Directly after the launch of Colonies, we have a very unique and special release in store for all the players. This release will be kept secret until launch, but will for sure add an extra touch to the mars of Crypto Mars." />
                 </Card>
                 <Card color="pink">
-                  <Card.Content header="Phase 6 - marswide Marketing & PR Campaign" />
+                  <Card.Content header="Phase 6 - Marswide Marketing & PR Campaign" />
                   <Card.Content description="This is when we go big on the marketing. At this stage we have all the components in place to be a truly unique and attractvie game for all audiences that let´s us go to mainstream media." />
                 </Card>
               </Card.Group>

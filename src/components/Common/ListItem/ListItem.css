@@ -1,0 +1,19 @@
+.ListItem {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  background-color: #e8e8e8;
+  border-radius: 6px;
+  margin: 0 10px 8px 10px;
+}
+
+.ListItem div {
+  height: 100%;
+  padding: 6px 9px;
+}
+
+.ListItem__number {
+  background: red;
+  text-align: center;
+  border-radius: 6px 0 0 6px;
+}
