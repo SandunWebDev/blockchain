@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Header, Icon, Accordion, Segment, Table } from "semantic-ui-react";
+import { Header, Icon, Accordion, Table } from "semantic-ui-react";
 
 import "./FAQPage.css";
 

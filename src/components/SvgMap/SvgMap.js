@@ -1,10 +1,11 @@
 /**
- * This is the base component to render maps. This map need mapDetails and mapPoints as props.
+ * This is the base component to render maps. This map need mapDimensions and mapPoints as props.
  */
 
 import React, { Component } from "react";
 import { Card, Button } from "semantic-ui-react";
 
+import { titleCase } from "../../helpers/commonFunctions";
 import "./SvgMap.css";
 
 class SvgMap extends Component {
@@ -22,7 +23,7 @@ class SvgMap extends Component {
       left: 0
     },
     selectedItem: {}
-    // backgroundUrl: this.props.mapDetails.backgroundUrl[0]
+    // backgroundUrl: this.props.mapDimensions.backgroundUrl[0]
   };
 
   // Handle hiding popup when close button clicked.
@@ -107,9 +108,9 @@ class SvgMap extends Component {
   }
 
   render() {
-    /** Getting mapDetails and mapPoints from recived props.
+    /** Getting mapDimensions and mapPoints from recived props.
      *
-     *  mapDetails must contain backgroundUrl and viewBox size.
+     *  mapDimensions must contain backgroundUrl and viewBox size.
      *  Both background image and viewBox dimensions should be same for best compatibility.
      *
      *  mapPoints must be a array of objects with following properties. (id, title, cx, cy)
@@ -117,7 +118,7 @@ class SvgMap extends Component {
      *
      *  (Simply use Illustrator to easily match dimentions)
      **/
-    const { mapDetails, mapPoints } = this.props;
+    const { mapDimensions, mapPoints } = this.props;
     const { selectedItem } = this.state;
 
     // Generating SVG elements for each mapPoint.
@@ -168,14 +169,13 @@ class SvgMap extends Component {
           <Card>
             <Card.Content>
               <Card.Header>{selectedItem.title}</Card.Header>
-              <Card.Meta>{selectedItem.subtitle} Subtitle Goes Here</Card.Meta>
+              <Card.Meta>This Belongs To {titleCase(selectedItem.region)} Region</Card.Meta>
               <Card.Description>
-                <p>Name : {selectedItem.name} Name Goes Here</p>
-                <p>Diameter : {selectedItem.diameter} Diameter Goes Here</p>
-                <p>Latitude : {selectedItem.latitude} Latitude Goes Here</p>
-                <p>Longtitude : {selectedItem.longtitude} Longtitude Goes Here</p>
-                <p>Origin : {selectedItem.origin} Origin Goes Here</p>
-                <p>Ethnicity: {selectedItem.ethnicity} Ethnicity Goes Here</p>
+                <p>Name : {selectedItem.title} </p>
+                <p>Latitude : {selectedItem.latitude}</p>
+                <p>Longtitude : {selectedItem.longtitude}</p>
+                <p>Region : {titleCase(selectedItem.region)} </p>
+                <p>Area(Sq.M.): {selectedItem.area} </p>
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
@@ -208,14 +208,14 @@ class SvgMap extends Component {
           <div>{selectedItem.title}</div>
         </div>
         <svg
-          viewBox={`0 0 ${mapDetails.width} ${mapDetails.height}`}
+          viewBox={`0 0 ${mapDimensions.width} ${mapDimensions.height}`}
           style={{
             backgroundColor: "white"
           }}
         >
           {/* All Map Areas Get Generated Here */}
           {allMapPoints}
-          <rect width={mapDetails.width} height={mapDetails.height} fill="none" stroke="black" strokeWidth="8" />
+          <rect width={mapDimensions.width} height={mapDimensions.height} fill="none" stroke="black" strokeWidth="8" />
         </svg>
       </div>
     );

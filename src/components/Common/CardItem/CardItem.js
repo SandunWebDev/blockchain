@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import { Input } from "semantic-ui-react";
+
+import { titleCase } from "../../../helpers/commonFunctions";
 import "./CardItem.css";
 
 class CardItem extends Component {
   render() {
-    const { mapDetail, mapPoint } = this.props;
+    const { mapDimensions, mapPoint, owner } = this.props;
 
     return (
       <div className="CardItem">
         <div className="CardItem__image">
           <svg
-            viewBox={`0 0 ${mapDetail.width} ${mapDetail.height}`}
+            viewBox={`0 0 ${mapDimensions.width} ${mapDimensions.height}`}
             style={{
               backgroundColor: "#3E222E"
             }}
@@ -28,7 +30,12 @@ class CardItem extends Component {
           <span className="CardItem__image__title">{mapPoint.title}</span>
           <span className="CardItem__image__logo">X</span>
         </div>
-        <div className="CardItem__owner">OWNER : {mapPoint.owner}</div>
+        <div
+          className="CardItem__owner"
+          style={{ backgroundColor: this.props.ownerList[this.props.owner.owner_username].color }}
+        >
+          OWNER : {owner.owner_username.toUpperCase()}
+        </div>
         <div className="CardItem__details">
           <div className="CardItem__details__left">
             <div className="CardItem__details__item">
@@ -43,11 +50,11 @@ class CardItem extends Component {
           <div className="CardItem__details__right">
             <div className="CardItem__details__item">
               <div className="CardItem__details__item__header">Origin</div>
-              <div>{mapPoint.origin}</div>
+              <div>{titleCase(mapPoint.region)}</div>
             </div>
             <div className="CardItem__details__item">
-              <div className="CardItem__details__item__header">Ethnicity</div>
-              <div>{mapPoint.ethnicity}</div>
+              <div className="CardItem__details__item__header">Area (Sq.M)</div>
+              <div>{mapPoint.area}</div>
             </div>
           </div>
         </div>
@@ -55,9 +62,9 @@ class CardItem extends Component {
           <Input
             fluid
             action={{ color: "teal", labelPosition: "right", icon: "cart", content: "BUY" }}
-            actionPosition="right"
+            actionPosition="left"
             placeholder="Enter A Amount"
-            defaultValue="52.03"
+            defaultValue={owner.next_price}
           />
         </div>
       </div>

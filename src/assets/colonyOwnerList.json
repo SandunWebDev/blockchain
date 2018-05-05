@@ -1,0 +1,136 @@
+{
+  "ownerList": [
+    {
+      "colony_id": "acidial_plantia",
+      "owner_username": "moira",
+      "current_price": 5.265,
+      "next_price": 7.265
+    },
+    {
+      "colony_id": "planum_borrium",
+      "owner_username": "tracey",
+      "current_price": 2.458,
+      "next_price": 4.458
+    },
+    {
+      "colony_id": "temppa_terra",
+      "owner_username": "gordon",
+      "current_price": 10.785,
+      "next_price": 12.785
+    },
+    {
+      "colony_id": "chryse_plantia",
+      "owner_username": "luke",
+      "current_price": 2.458,
+      "next_price": 4.458
+    },
+    {
+      "colony_id": "xanthe terra",
+      "owner_username": "jennie",
+      "current_price": 1.784,
+      "next_price": 3.784
+    },
+    {
+      "colony_id": "margatifier_terrot",
+      "owner_username": "nana",
+      "current_price": 5.456,
+      "next_price": 7.456
+    },
+    {
+      "colony_id": "arabia_terror",
+      "owner_username": "rozella",
+      "current_price": 6.778,
+      "next_price": 8.778
+    },
+    {
+      "colony_id": "aracadia_plantia",
+      "owner_username": "vena",
+      "current_price": 3.154,
+      "next_price": 5.154
+    },
+    {
+      "colony_id": "utopia_plantia",
+      "owner_username": "stefanie",
+      "current_price": 9.125,
+      "next_price": 11.125
+    },
+    {
+      "colony_id": "iidis_plantia",
+      "owner_username": "jeanna",
+      "current_price": 5.482,
+      "next_price": 7.482
+    },
+    {
+      "colony_id": "sabea_terror",
+      "owner_username": "nana",
+      "current_price": 3.145,
+      "next_price": 5.145
+    },
+    {
+      "colony_id": "simmeria_terror",
+      "owner_username": "nana",
+      "current_price": 2.487,
+      "next_price": 4.487
+    },
+    {
+      "colony_id": "elysium_plantia",
+      "owner_username": "margarett",
+      "current_price": 4.579,
+      "next_price": 6.579
+    },
+    {
+      "colony_id": "hesparia_planum",
+      "owner_username": "guillermina",
+      "current_price": 5.149,
+      "next_price": 7.149
+    },
+    {
+      "colony_id": "pramothi_terra",
+      "owner_username": "aleisha",
+      "current_price": 9.574,
+      "next_price": 11.574
+    },
+    {
+      "colony_id": "tyrhenna_terrot",
+      "owner_username": "fernanda",
+      "current_price": 5.641,
+      "next_price": 7.641
+    },
+    {
+      "colony_id": "dedalia_planum",
+      "owner_username": "telma",
+      "current_price": 10.658,
+      "next_price": 12.658
+    },
+    {
+      "colony_id": "sirenium_terra",
+      "owner_username": "thaddeus",
+      "current_price": 1.568,
+      "next_price": 3.568
+    },
+    {
+      "colony_id": "arctic_terra",
+      "owner_username": "telma",
+      "current_price": 7.512,
+      "next_price": 9.512
+    },
+    {
+      "colony_id": "saractic_terra",
+      "owner_username": "telma",
+      "current_price": 2.157,
+      "next_price": 4.157
+    },
+    {
+      "colony_id": "amazonis_plantia",
+      "owner_username": "telma",
+      "current_price": 3.482,
+      "next_price": 5.482
+    },
+    {
+      "colony_id": "lunae_planum",
+      "owner_username": "dania",
+      "current_price": 5.158,
+      "next_price": 7.158
+    }
+  ]
+}
