@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Divider, Button } from "semantic-ui-react";
+import { Divider, Button, Message, Icon } from "semantic-ui-react";
 import Map from "../SvgMap/SvgMap";
 import ListItem from "../Common/ListItem/ListItem";
 import CardItem from "../Common/CardItem/CardItem";
 
 import marsMap from "../../assets/marsMap.json";
 import colonyOwnerList from "../../assets/colonyOwnerList.json";
+import COLOR_LIST from "../../assets/colorList.js";
 import "./MapPage.css";
 import { titleCase } from "./../../helpers/commonFunctions";
 
@@ -27,25 +28,6 @@ class MapPage extends Component {
   };
 
   ownerListDataTransform() {
-    const COLOR_LIST = [
-      "red",
-      "green",
-      "blue",
-      "orange",
-      "red",
-      "green",
-      "blue",
-      "orange",
-      "red",
-      "green",
-      "blue",
-      "orange",
-      "red",
-      "green",
-      "blue",
-      "orange"
-    ];
-
     const transformedOwnerList = {};
 
     colonyOwnerList.ownerList.forEach((item, id) => {
@@ -63,12 +45,6 @@ class MapPage extends Component {
     });
 
     return transformedOwnerList;
-  }
-
-  colonyDetail(id) {
-    const { ownerList } = this.state;
-
-    ownerList;
   }
 
   componentDidMount() {
@@ -102,6 +78,32 @@ class MapPage extends Component {
     });
   }
 
+  statusRendering() {
+    const { connectStatus } = this.props;
+
+    if (connectStatus === "pending") {
+      return (
+        <Message icon info>
+          <Icon name="circle notched" loading />
+          <Message.Content>
+            <Message.Header>Loading</Message.Header>
+            Reading mars state from blockchain!
+          </Message.Content>
+        </Message>
+      );
+    } else if (connectStatus === "false") {
+      return (
+        <Message icon negative>
+          <Icon name="close" />
+          <Message.Content>
+            <Message.Header>Not Connected</Message.Header>
+            Crypto Mars requires Web3 Browser to use like MetaMask or Mist.
+          </Message.Content>
+        </Message>
+      );
+    }
+  }
+
   render() {
     const {
       mainMapDimensions,
@@ -109,11 +111,43 @@ class MapPage extends Component {
       mapPoints,
       ownerList,
       ownerListOri,
-      filteredMapPoints,
-      activeFilterButton
+      filteredMapPoints
     } = this.state;
 
-    console.log(ownerList);
+    const { connectStatus } = this.props;
+
+    // if (connectStatus === "pending") {
+    //   return (
+    //     <div className="MapPage">
+    //       <div className="pageWrapper MapPage__wrapper">
+    //         <h1>MARKETPLACE</h1>
+    //         <Message icon info>
+    //           <Icon name="circle notched" loading />
+    //           <Message.Content>
+    //             <Message.Header>Loading</Message.Header>
+    //             Reading mars state from blockchain!
+    //           </Message.Content>
+    //         </Message>
+    //       </div>
+    //     </div>
+    //   );
+    // } else if (connectStatus === "false") {
+    //   return (
+    //     <div className="MapPage">
+    //       <div className="pageWrapper MapPage__wrapper">
+    //         <h1>MARKETPLACE</h1>
+    //         <Message icon negative>
+    //           <Icon name="close" />
+    //           <Message.Content>
+    //             <Message.Header>Not Connected</Message.Header>
+    //             Crypto Mars requires Web3 Browser to use like MetaMask or Mist.
+    //           </Message.Content>
+    //         </Message>
+    //       </div>
+    //     </div>
+    //   );
+    // }
+
     const topOwnerList = Object.entries(ownerList)
       .sort((a, b) => {
         return a[1].total - b[1].total;
@@ -124,21 +158,26 @@ class MapPage extends Component {
       <div className="MapPage">
         <div className="pageWrapper MapPage__wrapper">
           <h1>MARKETPLACE</h1>
+          {this.statusRendering()}
           <div className="MapPage__mapSection">
-            <div className="MapPage__userlist">
-              {topOwnerList.map((item, id) => {
-                return (
-                  <ListItem
-                    key={id}
-                    number={(id < 9 ? "0" : "") + (id + 1)}
-                    name={titleCase(item[0])}
-                    color={item[1].color}
-                  />
-                );
-              })}
-            </div>
+            {connectStatus === "true" ? (
+              <div className="MapPage__userlist">
+                {topOwnerList.map((item, id) => {
+                  return (
+                    <ListItem
+                      key={id}
+                      number={(id < 9 ? "0" : "") + (id + 1)}
+                      name={titleCase(item[0])}
+                      color={item[1].color}
+                    />
+                  );
+                })}
+              </div>
+            ) : (
+              ""
+            )}
             <div className="MapPage__map">
-              <Map mapDimensions={mainMapDimensions} mapPoints={mapPoints} />
+              <Map mapDimensions={mainMapDimensions} mapPoints={mapPoints} connectStatus={connectStatus} />
             </div>
             <Divider horizontal>COLONIES DETAILS</Divider>
             <div className="MapPage__coloniesSection" />
@@ -159,6 +198,7 @@ class MapPage extends Component {
                       return ownerItem.colony_id === item.id;
                     })}
                     ownerList={ownerList}
+                    connectStatus={connectStatus}
                   />
                 );
               })}

@@ -13,7 +13,7 @@ import "./App.css";
 
 class App extends Component {
   state = {
-    ethereumConnected: false,
+    ethereumConnected: "pending",
     ethereumId: "XLRFC5"
   };
 
@@ -32,7 +32,7 @@ class App extends Component {
   render() {
     const { ethereumConnected, ethereumId } = this.state;
 
-    setTimeout(() => this.changeConnectStatus(true), 5000);
+    setTimeout(() => this.changeConnectStatus("true"), 5000);
     return (
       <div className="App">
         <Header
@@ -44,7 +44,7 @@ class App extends Component {
         <Route exact path="/how" component={HowPage} />
         <Route exact path="/tos" component={TOSPage} />
         <Route exact path="/faq" component={FAQPage} />
-        <Route exact path="/dapp" component={MapPage} />
+        <Route exact path="/dapp" component={() => <MapPage connectStatus={ethereumConnected} />} />
         <Footer />
       </div>
     );

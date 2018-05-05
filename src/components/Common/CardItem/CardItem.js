@@ -6,7 +6,7 @@ import "./CardItem.css";
 
 class CardItem extends Component {
   render() {
-    const { mapDimensions, mapPoint, owner } = this.props;
+    const { mapDimensions, mapPoint, owner, connectStatus } = this.props;
 
     return (
       <div className="CardItem">
@@ -30,12 +30,12 @@ class CardItem extends Component {
           <span className="CardItem__image__title">{mapPoint.title}</span>
           <span className="CardItem__image__logo">X</span>
         </div>
-        <div
+        {connectStatus === "true" ? (<div
           className="CardItem__owner"
           style={{ backgroundColor: this.props.ownerList[this.props.owner.owner_username].color }}
         >
           OWNER : {owner.owner_username.toUpperCase()}
-        </div>
+        </div>) : ""}
         <div className="CardItem__details">
           <div className="CardItem__details__left">
             <div className="CardItem__details__item">
@@ -58,7 +58,7 @@ class CardItem extends Component {
             </div>
           </div>
         </div>
-        <div className="CardItem__footer">
+        {connectStatus === "true" ? (<div className="CardItem__footer">
           <Input
             fluid
             action={{ color: "teal", labelPosition: "right", icon: "cart", content: "BUY" }}
@@ -66,7 +66,8 @@ class CardItem extends Component {
             placeholder="Enter A Amount"
             defaultValue={owner.next_price}
           />
-        </div>
+        </div>) : ""}
+        
       </div>
     );
   }

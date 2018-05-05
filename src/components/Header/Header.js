@@ -24,8 +24,8 @@ class Header extends Component {
       position: this.props.location.pathname === "/" ? "absolute" : "static"
     };
 
-    const connectLogoStyle = connectStatus ? "#659D32" : "red";
-    const connectIdStyle = connectStatus ? { display: "initial" } : { display: "none" };
+    const connectLogoStyle = connectStatus === "true" ? "#659D32" : "red";
+    const connectIdStyle = connectStatus === "true" ? { display: "initial" } : { display: "none" };
 
     return (
       <div className="Header" style={headerStyle}>

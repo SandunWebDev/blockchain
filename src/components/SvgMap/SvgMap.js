@@ -118,7 +118,7 @@ class SvgMap extends Component {
      *
      *  (Simply use Illustrator to easily match dimentions)
      **/
-    const { mapDimensions, mapPoints } = this.props;
+    const { mapDimensions, mapPoints, connectStatus } = this.props;
     const { selectedItem } = this.state;
 
     // Generating SVG elements for each mapPoint.
@@ -145,11 +145,11 @@ class SvgMap extends Component {
             }}
             onMouseOut={(e) => {
               // e.target.style.fillOpacity = "1.0";
-              e.target.style.fill = item.fill;
+              e.target.style.fill = connectStatus === "true" ? item.fill : "gray";
               // this.hoverPopupHide();
             }}
             ref="boundry"
-            fill={item.fill || "#000000"}
+            fill={connectStatus === "true" ? item.fill : "gray"}
             fillOpacity={1}
             stroke="#000000"
             strokeWidth="2"
