@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input } from "semantic-ui-react";
+import { Input, Button, Header, Image, Modal, Icon } from "semantic-ui-react";
 
 import { titleCase } from "../../../helpers/commonFunctions";
 import "./CardItem.css";
@@ -30,12 +30,16 @@ class CardItem extends Component {
           <span className="CardItem__image__title">{mapPoint.title}</span>
           <span className="CardItem__image__logo">X</span>
         </div>
-        {connectStatus === "true" ? (<div
-          className="CardItem__owner"
-          style={{ backgroundColor: this.props.ownerList[this.props.owner.owner_username].color }}
-        >
-          OWNER : {owner.owner_username.toUpperCase()}
-        </div>) : ""}
+        {connectStatus === "true" ? (
+          <div
+            className="CardItem__owner"
+            style={{ backgroundColor: this.props.ownerList[this.props.owner.owner_username].color }}
+          >
+            OWNER : {owner.owner_username.toUpperCase()}
+          </div>
+        ) : (
+          ""
+        )}
         <div className="CardItem__details">
           <div className="CardItem__details__left">
             <div className="CardItem__details__item">
@@ -58,16 +62,89 @@ class CardItem extends Component {
             </div>
           </div>
         </div>
-        {connectStatus === "true" ? (<div className="CardItem__footer">
-          <Input
-            fluid
-            action={{ color: "teal", labelPosition: "right", icon: "cart", content: "BUY" }}
-            actionPosition="left"
-            placeholder="Enter A Amount"
-            defaultValue={owner.next_price}
-          />
-        </div>) : ""}
-        
+        {connectStatus === "true" ? (
+          <div className="CardItem__footer">
+            <Input className="CardItem__footer__input" placeholder="Search..." value={owner.next_price + " ETH"} />
+            <Modal
+              className="CardItem__footer__modal"
+              trigger={
+                <Button
+                  className="CardItem__footer__button"
+                  icon
+                  fluid
+                  attached="left"
+                  color="teal"
+                  labelPosition="right"
+                >
+                  <Icon name="cart" />
+                  BUY
+                </Button>
+              }
+            >
+              <Modal.Header>{mapPoint.title}</Modal.Header>
+              <div className="footer__modal__content">
+                <svg
+                  width="300"
+                  viewBox={`0 0 ${mapDimensions.width} ${mapDimensions.height}`}
+                  style={{
+                    backgroundColor: "#3E222E"
+                  }}
+                >
+                  <path
+                    fill={"#ffffff"}
+                    fillOpacity={1}
+                    stroke="#ffffff"
+                    strokeWidth="2"
+                    strokeMiterlimit="10"
+                    d={mapPoint.individualPathOutline}
+                  />
+                  {/* <rect width={400} height={400} fill="none" stroke="black" strokeWidth="8" /> */}
+                </svg>
+                <div>
+                  <p>
+                    You can purchase <span>{mapPoint.title}</span> for <span>{owner.current_price} ETH </span> from{" "}
+                    <span>{titleCase(owner.owner_username)}</span>.
+                  </p>
+                  <p>
+                    The next price someone can purchase this country for is <span>{owner.next_price} ETH </span>
+                  </p>
+                  <p>
+                    You may bid higher than the current country price to ensure that you get a buy. If your bid is over
+                    the current price, you will get refunded the difference.
+                  </p>
+                  <p>Your transaction may fail if the price has moved above your bid price.</p>
+                  <p>This information was updated x seconds ago.</p>
+                  <p style={{ fontStyle: "italic" }}>
+                    DISCLAIMER: Countries are collectibles, there is no guarantee that other players or anyone else will
+                    buy this collectible from you.
+                  </p>
+                </div>
+              </div>
+              <div className="footer__modal__footer">
+                <div>
+                  <Input
+                    className="CardItem__footer__input"
+                    placeholder="Search..."
+                    value={owner.next_price + " ETH"}
+                  />
+                  <Button
+                    classsName="CardItem__footer__input"
+                    icon
+                    fluid
+                    attached="left"
+                    color="teal"
+                    labelPosition="right"
+                  >
+                    <Icon name="cart" />
+                    BUY
+                  </Button>
+                </div>
+              </div>
+            </Modal>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     );
   }

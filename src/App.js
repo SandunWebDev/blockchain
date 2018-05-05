@@ -13,7 +13,7 @@ import "./App.css";
 
 class App extends Component {
   state = {
-    ethereumConnected: "pending",
+    ethereumConnected: "true",
     ethereumId: "XLRFC5"
   };
 
@@ -29,10 +29,13 @@ class App extends Component {
     });
   }
 
+  componentDidMount() {
+    // const timerId = setTimeout(() => this.changeConnectStatus("true"), 5000);
+  }
+
   render() {
     const { ethereumConnected, ethereumId } = this.state;
 
-    setTimeout(() => this.changeConnectStatus("true"), 5000);
     return (
       <div className="App">
         <Header

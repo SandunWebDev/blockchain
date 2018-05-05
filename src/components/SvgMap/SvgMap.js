@@ -9,22 +9,27 @@ import { titleCase } from "../../helpers/commonFunctions";
 import "./SvgMap.css";
 
 class SvgMap extends Component {
-  state = {
-    popup: {
-      display: "none",
-      position: "relative",
-      top: 500,
-      left: 0
-    },
-    hoverPopup: {
-      display: "none",
-      position: "relative",
-      top: 500,
-      left: 0
-    },
-    selectedItem: {}
-    // backgroundUrl: this.props.mapDimensions.backgroundUrl[0]
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      popup: {
+        display: "none",
+        position: "relative",
+        top: 500,
+        left: 0
+      },
+      hoverPopup: {
+        display: "none",
+        position: "relative",
+        top: 500,
+        left: 0
+      },
+      selectedItem: {}
+      // ownerListOri: props.ownerListOri
+      // backgroundUrl: this.props.mapDimensions.backgroundUrl[0]
+    };
+    console.log(this.props.ownerListOri);
+  }
 
   // Handle hiding popup when close button clicked.
   popupHide(e) {
@@ -49,8 +54,8 @@ class SvgMap extends Component {
       popup: {
         display: "initial",
         position: "absolute",
-        top: e.clientY + "px",
-        left: e.clientX + "px"
+        top: e.pageY + "px",
+        left: e.pageX + "px"
       },
       selectedItem: item
     });
@@ -62,8 +67,8 @@ class SvgMap extends Component {
       hoverPopup: {
         display: "initial",
         position: "absolute",
-        top: e.clientY + 3 + "px",
-        left: e.clientX + 3 + "px"
+        top: e.pageY + 3 + "px",
+        left: e.pageX + 3 + "px"
       },
       selectedItem: item
     });
@@ -105,6 +110,12 @@ class SvgMap extends Component {
         </text>
       );
     }
+  }
+
+  test(item) {
+    this.props.ownerListOri.find((ownerItem) => {
+      return ownerItem.colony_id === item.id;
+    });
   }
 
   render() {

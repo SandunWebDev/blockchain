@@ -75,4 +75,33 @@
 .CardItem__footer {
   padding: 8px;
   text-align: center;
+  display: flex;
+}
+
+.CardItem__footer__input,
+.CardItem__footer__button {
+  width: 50%;
+}
+
+.footer__modal__content {
+  display: flex;
+}
+
+.footer__modal__content > div {
+  padding: 20px;
+}
+
+.footer__modal__content span {
+  font-weight: bold !important;
+}
+
+.footer__modal__footer {
+  background-color: rgb(175, 168, 168);
+  display: flex;
+  padding: 15px;
+  justify-content: center;
+}
+
+.footer__modal__footer > div {
+  display: flex;
 }

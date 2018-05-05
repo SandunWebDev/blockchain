@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Divider, Button, Message, Icon } from "semantic-ui-react";
+import { Divider, Button, Message, Icon, Dropdown } from "semantic-ui-react";
 import Map from "../SvgMap/SvgMap";
 import ListItem from "../Common/ListItem/ListItem";
 import CardItem from "../Common/CardItem/CardItem";
@@ -58,7 +58,7 @@ class MapPage extends Component {
     });
   }
 
-  filterMapPoints(region) {
+  filterMapPointsByRegion(region) {
     if (region === "all") {
       return this.setState({
         filteredMapPoints: this.state.mapPoints
@@ -76,6 +76,66 @@ class MapPage extends Component {
     this.setState({
       filteredMapPoints
     });
+  }
+
+  sortMapPointsByType(type) {
+    const { filteredMapPoints: temp1, ownerListOri: temp2 } = this.state;
+    // console.log(filteredMapPoints, ownerListOri);
+    let sortedMapPoints = {};
+
+    // function findOwnerDetails(item) {
+    //   ownerListOri.find((ownerItem) => {
+    //     console.log(item, ownerItem);
+    //     return ownerItem.colony_id === item.id;
+    //   });
+    // }
+
+    switch (type) {
+      case "priceAsc": {
+        // sortedMapPoints = filteredMapPoints.sort((a, b) => {
+        //   let x = ownerListOri.find((ownerItem) => {
+        //     return ownerItem.colony_id === a.id;
+        //   }).current_price;
+
+        //   let y = ownerListOri.find((ownerItem) => {
+        //     return ownerItem.colony_id === b.id;
+        //   }).current_price;
+
+        //   return x > y ? 0 : 1;
+        // });
+        sortedMapPoints = temp1.sort((a, b) => {
+          let x = temp2.find((c) => {
+            return c.colony_id === a.id;
+          }).next_price;
+
+          let y = temp2.find((c) => {
+            return c.colony_id === b.id;
+          }).next_price;
+
+          return x > y ? 1 : 0;
+        });
+        console.log(sortedMapPoints);
+        break;
+      }
+    }
+
+    this.setState({
+      filteredMapPoints: sortedMapPoints
+    });
+
+    // filteredMap.sort((a,b)=>{
+    //   x =  ownerDetails.find((c)=>{
+    //     return c.colony_id === a.id
+    //   })
+
+    //   y=   ownerDetails.find((c)=>{
+    //     return c.colony_id === b.id
+    //   })
+
+    //   return x>y ? 0 : 1
+
+    // console.log(x.current_price, y.current_price )
+    // })
   }
 
   statusRendering() {
@@ -116,38 +176,6 @@ class MapPage extends Component {
 
     const { connectStatus } = this.props;
 
-    // if (connectStatus === "pending") {
-    //   return (
-    //     <div className="MapPage">
-    //       <div className="pageWrapper MapPage__wrapper">
-    //         <h1>MARKETPLACE</h1>
-    //         <Message icon info>
-    //           <Icon name="circle notched" loading />
-    //           <Message.Content>
-    //             <Message.Header>Loading</Message.Header>
-    //             Reading mars state from blockchain!
-    //           </Message.Content>
-    //         </Message>
-    //       </div>
-    //     </div>
-    //   );
-    // } else if (connectStatus === "false") {
-    //   return (
-    //     <div className="MapPage">
-    //       <div className="pageWrapper MapPage__wrapper">
-    //         <h1>MARKETPLACE</h1>
-    //         <Message icon negative>
-    //           <Icon name="close" />
-    //           <Message.Content>
-    //             <Message.Header>Not Connected</Message.Header>
-    //             Crypto Mars requires Web3 Browser to use like MetaMask or Mist.
-    //           </Message.Content>
-    //         </Message>
-    //       </div>
-    //     </div>
-    //   );
-    // }
-
     const topOwnerList = Object.entries(ownerList)
       .sort((a, b) => {
         return a[1].total - b[1].total;
@@ -177,16 +205,42 @@ class MapPage extends Component {
               ""
             )}
             <div className="MapPage__map">
-              <Map mapDimensions={mainMapDimensions} mapPoints={mapPoints} connectStatus={connectStatus} />
+              <Map
+                mapDimensions={mainMapDimensions}
+                mapPoints={mapPoints}
+                connectStatus={connectStatus}
+                ownerListOri={ownerListOri}
+              />
             </div>
             <Divider horizontal>COLONIES DETAILS</Divider>
             <div className="MapPage__coloniesSection" />
             <div className="coloniesSection__buttons">
-              <Button onClick={this.filterMapPoints.bind(this, "all")}>ALL</Button>
-              <Button onClick={this.filterMapPoints.bind(this, "central")}>CENTRAL</Button>
-              <Button onClick={this.filterMapPoints.bind(this, "north")}>NORTH&nbsp;POLE</Button>
-              <Button onClick={this.filterMapPoints.bind(this, "south")}>SOUTH&nbsp;POLE</Button>
+              <Button onClick={this.filterMapPointsByRegion.bind(this, "all")}>ALL</Button>
+              <Button onClick={this.filterMapPointsByRegion.bind(this, "central")}>CENTRAL</Button>
+              <Button onClick={this.filterMapPointsByRegion.bind(this, "north")}>NORTH&nbsp;POLE</Button>
+              <Button onClick={this.filterMapPointsByRegion.bind(this, "south")}>SOUTH&nbsp;POLE</Button>
+              <Button.Group color="brown">
+                <Dropdown text="SORT" icon="filter" labeled button className="icon">
+                  <Dropdown.Menu>
+                    <Dropdown.Header content="Sort Cur. Selection By " />
+                    <Dropdown.Divider />
+                    <Dropdown.Item
+                      onClick={this.sortMapPointsByType.bind(this, "priceAsc")}
+                      icon="arrow up"
+                      text="Price Acending"
+                    />
+                    <Dropdown.Item
+                      onClick={this.sortMapPointsByType.bind(this, "priceDec")}
+                      icon="arrow down"
+                      text="Price Decending"
+                    />
+                    <Dropdown.Item onClick={this.sortMapPointsByType.bind(this, "newest")} icon="add" text="Newest" />
+                    <Dropdown.Item onClick={this.sortMapPointsByType.bind(this, "oldest")} icon="minus" text="Oldest" />
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Button.Group>
             </div>
+
             <div className="coloniesSection__cards">
               {filteredMapPoints.map((item, id) => {
                 return (
