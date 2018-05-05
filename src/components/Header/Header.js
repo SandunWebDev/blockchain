@@ -42,7 +42,7 @@ class Header extends Component {
                 <Link to="/dapp">MARKETPLACE</Link>
               </li>
               <li>
-                <Link to="/dapp">MY&nbsp;ASSETS</Link>
+                <Link to="/myassets">MY&nbsp;ASSETS</Link>
               </li>
               <Popup
                 open={this.state.isOpen}

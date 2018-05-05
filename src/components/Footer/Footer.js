@@ -52,7 +52,7 @@ class Footer extends Component {
                 <Link to="/dapp">Marketplace</Link>
               </li>
               <li>
-                <Link to="/dapp">My Countries</Link>
+                <Link to="/myassets">My Assets</Link>
               </li>
               <li>
                 <Link to="/">Bounty Program</Link>

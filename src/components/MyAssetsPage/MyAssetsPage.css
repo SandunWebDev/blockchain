@@ -1,0 +1,9 @@
+.MyAssetsPage__wrapper {
+  margin: 0 auto;
+  padding: 50px 20px;
+}
+
+.MyAssetsPage__wrapper h1 {
+  text-align: center;
+  margin-bottom: 25px;
+}

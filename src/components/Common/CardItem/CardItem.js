@@ -66,6 +66,7 @@ class CardItem extends Component {
           <div className="CardItem__footer">
             <Input className="CardItem__footer__input" placeholder="Search..." value={owner.next_price + " ETH"} />
             <Modal
+              size="tiny"
               className="CardItem__footer__modal"
               trigger={
                 <Button

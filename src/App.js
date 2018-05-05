@@ -8,6 +8,7 @@ import HowPage from "./components/HowPage/HowPage";
 import TOSPage from "./components/TOSPage/TOSPage";
 import FAQPage from "./components/FAQPage/FAQPage";
 import MapPage from "./components/MapPage/MapPage";
+import MyAssetsPage from "./components/MyAssetsPage/MyAssetsPage";
 
 import "./App.css";
 
@@ -48,6 +49,7 @@ class App extends Component {
         <Route exact path="/tos" component={TOSPage} />
         <Route exact path="/faq" component={FAQPage} />
         <Route exact path="/dapp" component={() => <MapPage connectStatus={ethereumConnected} />} />
+        <Route exact path="/myassets" component={MyAssetsPage} />
         <Footer />
       </div>
     );
