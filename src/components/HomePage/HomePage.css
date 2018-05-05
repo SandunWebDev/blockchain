@@ -6,13 +6,20 @@
   background-image: url("../../assets/mainBackground.jpg");
   background-size: cover;
   height: 100vh;
-
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.Homepage__splash__transparent {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+}
+
 .HomePage__splash__wrapper {
+  z-index: 2;
   text-align: center;
   color: white;
   letter-spacing: 2px;
@@ -89,4 +96,7 @@
   align-items: center;
   margin: 0 auto;
   text-align: center;
+}
+
+.roadmap-active {
 }

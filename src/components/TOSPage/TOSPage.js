@@ -13,7 +13,7 @@ class TOSPage extends Component {
               <Icon name="copyright" />
               <h1>TERMS OF SERVICE</h1>
               <Header.Subheader>
-                <h3>CRYPTO MARS PVT. LTD.</h3>
+                <h3>CRYPTOMARS.IO</h3>
               </Header.Subheader>
             </Header>
           </div>
@@ -40,10 +40,10 @@ class TOSPage extends Component {
               another party, then you do not have permission to use this Game, this Site, or these Smart Contracts.<p>
                 <br />
                 <br />1. WE DO NOT ACCEPT DEPOSITS<br />
-                <br />Crypto Mars.io is a UI interface which allows you to interact directly with a blockcahin smart
+                <br />CryptoMars.io is a UI interface which allows you to interact directly with a blockcahin smart
                 contract on the ethereum network using the “Metamask” browser extension. The website and it’s creators
                 do not except or hold any payments from players. Any ether transfers done over the website’s are
-                transferred directly to blockchain contract address: 0x92cB5F1FbabbcbDd891B9Cbd8E9a056c8c1eEbEF Any
+                transferred directly to blockchain contract address:&nbps;0x92cB5F1FbabbcbDd891B9Cbd8E9a056c8c1eEbEF Any
                 Ether or fiat currency deposited into your metamask extension is fully owned and controlled by the
                 player. The game does not have access to the funds deposited in your metamask browser extension.
                 Transfers of Ether, are passed directly from your metamask account to a smart contract on the ethereum
@@ -65,7 +65,7 @@ class TOSPage extends Component {
               </p>
               <p>
                 3. SMART CONTRACTS<br />
-                <br />We have used the name of countries to create unique, one-of-a-kind “Smart Contracts” which are
+                <br />We have used the name of Mars Colonies to create unique, one-of-a-kind “Smart Contracts” which are
                 represented by ERC721 tokens on the Ethereum BlockChain. These “Smart Contracts” are not endorsed or
                 supported by the person appearing on the card. New colonies Smart Contracts will be released as we deem
                 fit. Each colonies Smart Contract may be purchased by you utilizing ether. You may purchase any colonies
@@ -101,7 +101,7 @@ class TOSPage extends Component {
                 wallet and/or any other electronic wallet you utilize to interact with the Game. You are solely
                 responsible for the safety and security of your account with us. If you become aware of security breach
                 in regards to your password or your account, you agree to notify us immediately upon discovery at
-                hello@Crypto Mars.io.
+                hello@CryptoMars.io.
               </p>
               <p>
                 5. FEES AND PAYMENTS<br />

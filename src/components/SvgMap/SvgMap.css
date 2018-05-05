@@ -7,9 +7,14 @@
 }
 
 .svgMap__hoverPopup {
-  background: rgba(40, 81, 170, 0.912);
+  background: rgba(40, 129, 170, 0.912);
   border-radius: 8px;
-  font-size: 12px;
+  font-size: 13px;
   padding: 10px;
-  width: 100px;
+  max-width: 200px;
+}
+
+.svgMap__hoverPopup span{
+  font-size: 14px;
+  font-weight: bold;
 }

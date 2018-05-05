@@ -109,34 +109,46 @@ class FAQPage extends Component {
               </Accordion.Title>
               <Accordion.Content active={activeIndex1 === 0}>
                 <p>
-                  Crypto Mars is a game about conquering the world on the Blockchain and earn Ether while doing so.
-                  Every country is represented as a Smart Contract and there is only one contract per country. Once you
-                  buy and conquer a country you take ownership of the country. The game’s interactive world map is then
-                  colored after the last six characters of your wallet for that country. If someone buys your country,
-                  you lose ownership but earn up to double in return of investment back to your wallet.
+                  CryptoMars ​is a game designed to give fun and knowledge about the Planet Mars and the Blockchain.
+                  Players can conquer the mars on the Blockchain and earn Ether while doing so.
                 </p>
-                <p>So in short terms, it is a game that earns you Ether the more you play it.</p>
+                <p>
+                  Every Area is represented as a Smart Contract and there is only one contract per Mars Area. Once you
+                  buy and conquer a Mars Area you take ownership of the Mars Area. The game’s interactive mars map is
+                  then colored after the last six characters of your wallet for that Mars Area. If someone buys your
+                  area, you lose ownership but earn up to double in return of investment back to your wallet.
+                </p>
+                <p>
+                  In short terms, it is a game that earns you Ether the more you play it, more you know about the Planet
+                  mars.
+                </p>
               </Accordion.Content>
 
               <Accordion.Title active={activeIndex1 === 1} index={1} onClick={this.handleClick1}>
                 <Icon name="dropdown" />
-                How do I buy a country?
+                What is two way profit?
               </Accordion.Title>
               <Accordion.Content active={activeIndex1 === 1}>
-                <p>
-                  Open the World Map and browse through all the available countries. As soon as you find your favorite
-                  country you want to take over, click on it to buy it. The game (dApp) will tell you what to do to
-                  complete your purchase to conquer the country. When the transaction is completed, you will be the sole
-                  owner of the country and the World Map will light up with your color for that country.
-                </p>
+                <p>Each user will get profited by 2 ways :</p>
+                <ol>
+                  <li>
+                    When someone brought your place you will get up to double the amount back what you initially paid.
+                  </li>
+                  <li>
+                    Each owner of a MarsArea is considered as an Emperor and later, when MarsCountries are released each
+                    Mars Area you will get 1- 10 countries under its ruling. The Emperor also get commission when
+                    somebody brought one of there countries during his ownership of area period
+                  </li>
+                </ol>
               </Accordion.Content>
+
               <Accordion.Title active={activeIndex1 === 2} index={2} onClick={this.handleClick1}>
                 <Icon name="dropdown" />
-                How much is a country?
+                How much is a Place?
               </Accordion.Title>
               <Accordion.Content active={activeIndex1 === 2}>
                 <p>
-                  It depends on the country and how popular it is. Since each country doubles in price after ever
+                  It depends on the Mars Area and how popular it is. Since each Mars Area doubles in price after ever
                   conquest (purchase).
                 </p>
                 <Table celled>
@@ -189,14 +201,14 @@ class FAQPage extends Component {
               </Accordion.Title>
               <Accordion.Content active={activeIndex1 === 3}>
                 <p>
-                  As in most of the real world, money talks. If someone wants your country and have enough funds to buy
-                  it, they are able to. But on the upside, you will earn up to double the amount back of what you
+                  As in most of the real world, money talks. If someone wants your Mars Area and have enough funds to
+                  buy it, they are able to. But on the upside, you will earn up to double the amount back of what you
                   initially paid.
                 </p>
               </Accordion.Content>
               <Accordion.Title active={activeIndex1 === 4} index={4} onClick={this.handleClick1}>
                 <Icon name="dropdown" />
-                Can I use regular currency (USD, EUR, etc) to buy country contracts?
+                Can I use regular currency (USD, EUR, etc) to buy Mars Area contracts?
               </Accordion.Title>
               <Accordion.Content active={activeIndex1 === 4}>
                 <p>
@@ -211,11 +223,11 @@ class FAQPage extends Component {
               </Accordion.Title>
               <Accordion.Content active={activeIndex1 === 5}>
                 <p>
-                  You can think of country smart contracts as collectibles – the new version of baseball cards or
+                  You can think of Mars Area smart contracts as collectibles – the new version of baseball cards or
                   artwork. While they do have value, that value is based on their desirability. You can make money on
                   Crypto Mars smart contracts by selling the contracts in the game and receiving a higher ETH amount
                   than you originally invested. But this of course depends on the market, so please keep in mind that
-                  there are not guarantees someone will buy a country from you.
+                  there are not guarantees someone will buy a Mars Area from you.
                 </p>
               </Accordion.Content>
               <Accordion.Title active={activeIndex1 === 6} index={6} onClick={this.handleClick1}>

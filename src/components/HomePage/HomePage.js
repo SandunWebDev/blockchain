@@ -1,25 +1,26 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import { Button, Card, Icon } from "semantic-ui-react";
+import { Button, Card, Icon, Label } from "semantic-ui-react";
 
-import mainSection_image1 from "../../assets/mainSection_image1.png";
+import mainSection_image1 from "../../assets/mainSection_image1.jpg";
 import mainSection_image2 from "../../assets/mainSection_image2.jpg";
-import mainSection_image3 from "../../assets/mainSection_image3.jpg";
-import mainSection_image4 from "../../assets/mainSection_image4.png";
+import mainSection_image3 from "../../assets/mainSection_image3.png";
+import mainSection_image4 from "../../assets/mainSection_image4.jpg";
 import "./HomePage.css";
 
 class HomePage extends Component {
   render() {
     return (
       <div className="HomePage">
+        <div className="Homepage__splash__transparent" />
         <div className="Homepage__splash">
           <div className="HomePage__splash__wrapper pageWrapper">
             <h1 className="Homepage__splash__title">OWN A PIECE OF THE MARS</h1>
             <div className="Homepage__splash__subtitle">ON THE BLOCKCHAIN</div>
             <Link to="/dapp">
               <Button color="teal" icon labelPosition="right" className="Homepage__splash__button">
-                <Icon name="mars" />
+                <Icon name="external" />
                 ENTER
               </Button>
             </Link>
@@ -113,8 +114,11 @@ class HomePage extends Component {
           <div className="pageWrapper">
             <h1>Road Map</h1>
             <div className="Homepage__section__roadmap">
-              <Card.Group itemsPerRow={2}>
+              <Card.Group className="roadmap-active raised" itemsPerRow={2}>
                 <Card color="red">
+                  <Label as="span" color="green" ribbon>
+                    Completed
+                  </Label>
                   <Card.Content header="Phase 1 - Launch MVP" />
                   <Card.Content description="Crypto Mars goes live to the mars. We start of with a minimal UI and limited marketing to crypto enthusiasts and websites." />
                 </Card>

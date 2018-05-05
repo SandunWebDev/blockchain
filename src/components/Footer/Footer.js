@@ -71,7 +71,7 @@ class Footer extends Component {
             <a href="https://metamask.io/" target="_blank" rel="noopener noreferrer">
               <img src="https://cryptocountries.io/static/media/meta.5d168b61.png" alt="" />
             </a>
-            <h4>All rights reserved. © 2018 CryptoMars</h4>
+            <h4>All Rights Reserved. © 2018 CRYPTOMARS.IO</h4>
           </div>
         </div>
       </div>

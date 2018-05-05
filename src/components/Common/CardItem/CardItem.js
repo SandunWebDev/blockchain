@@ -114,7 +114,7 @@ class CardItem extends Component {
                     the current price, you will get refunded the difference.
                   </p>
                   <p>Your transaction may fail if the price has moved above your bid price.</p>
-                  <p>This information was updated x seconds ago.</p>
+                  {/* <p>This information was updated x seconds ago.</p> */}
                   <p style={{ fontStyle: "italic" }}>
                     DISCLAIMER: Countries are collectibles, there is no guarantee that other players or anyone else will
                     buy this collectible from you.

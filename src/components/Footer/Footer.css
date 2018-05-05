@@ -29,3 +29,8 @@
 .Footer__section ul li {
   padding: 3px 0;
 }
+
+.discord-icon {
+  background-image: url("https://www.shareicon.net/download/2016/12/30/866945_game_512x512.png");
+  background-size: contain;
+}

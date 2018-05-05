@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Message, Icon } from "semantic-ui-react";
 import CardItem from "../Common/CardItem/CardItem";
 
 import marsMap from "../../assets/marsMap.json";
@@ -42,8 +43,35 @@ class MyAssetsPage extends Component {
     this.setState({
       ownerListOri: colonyOwnerList.ownerList,
       ownerList: this.ownerListDataTransform(),
-      userMapPoints: marsMap.mapPoints
+      mapPoints: marsMap.mapPoints,
+      userMapPoints: marsMap.mapPoints.slice(5, 10)
     });
+  }
+
+  statusRendering() {
+    const { connectStatus } = this.props;
+
+    if (connectStatus === "pending") {
+      return (
+        <Message icon info>
+          <Icon name="circle notched" loading />
+          <Message.Content>
+            <Message.Header>Loading</Message.Header>
+            Reading Mars State from Blockchain!
+          </Message.Content>
+        </Message>
+      );
+    } else if (connectStatus === "false") {
+      return (
+        <Message icon negative>
+          <Icon name="close" />
+          <Message.Content>
+            <Message.Header>Not Connected</Message.Header>
+            You Have To Be Log In To See Your Assets.
+          </Message.Content>
+        </Message>
+      );
+    }
   }
 
   render() {
@@ -55,22 +83,27 @@ class MyAssetsPage extends Component {
       <div className="MyAssetsPage">
         <div className="pageWrapper MyAssetsPage__wrapper">
           <h1>MY ASSETS</h1>
-          <div className="coloniesSection__cards">
-            {userMapPoints.map((item, id) => {
-              return (
-                <CardItem
-                  key={id}
-                  mapDimensions={individualMapDimensions}
-                  mapPoint={item}
-                  owner={ownerListOri.find((ownerItem) => {
-                    return ownerItem.colony_id === item.id;
-                  })}
-                  ownerList={ownerList}
-                  connectStatus={connectStatus}
-                />
-              );
-            })}
-          </div>
+          {this.statusRendering()}
+          {connectStatus === "true" ? (
+            <div className="coloniesSection__cards">
+              {userMapPoints.map((item, id) => {
+                return (
+                  <CardItem
+                    key={id}
+                    mapDimensions={individualMapDimensions}
+                    mapPoint={item}
+                    owner={ownerListOri.find((ownerItem) => {
+                      return ownerItem.colony_id === item.id;
+                    })}
+                    ownerList={ownerList}
+                    // connectStatus={connectStatus}
+                  />
+                );
+              })}
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     );

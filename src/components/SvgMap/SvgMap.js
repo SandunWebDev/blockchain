@@ -24,11 +24,10 @@ class SvgMap extends Component {
         top: 500,
         left: 0
       },
-      selectedItem: {}
-      // ownerListOri: props.ownerListOri
+      selectedItem: {},
+      ownerListOri: props.ownerListOri
       // backgroundUrl: this.props.mapDimensions.backgroundUrl[0]
     };
-    console.log(this.props.ownerListOri);
   }
 
   // Handle hiding popup when close button clicked.
@@ -112,10 +111,12 @@ class SvgMap extends Component {
     }
   }
 
-  test(item) {
-    this.props.ownerListOri.find((ownerItem) => {
+  getOwnerDetails(item) {
+    let owner = this.props.ownerListOri.find((ownerItem) => {
       return ownerItem.colony_id === item.id;
     });
+
+    return owner ? titleCase(owner.owner_username) + " - " + owner.next_price + "ETH" : "";
   }
 
   render() {
@@ -216,7 +217,10 @@ class SvgMap extends Component {
           </Card>
         </div>
         <div className="svgMap__hoverPopup" style={this.state.hoverPopup}>
-          <div>{selectedItem.title}</div>
+          <div>
+            <span>{selectedItem.title} </span> <br />
+            {`Owned By ${this.getOwnerDetails.bind(this, selectedItem)()}`}
+          </div>
         </div>
         <svg
           viewBox={`0 0 ${mapDimensions.width} ${mapDimensions.height}`}

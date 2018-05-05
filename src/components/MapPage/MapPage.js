@@ -24,7 +24,8 @@ class MapPage extends Component {
     ownerList: {},
     ownerListOri: [],
     filteredMapPoints: [],
-    activeFilterButton: "all"
+    sortType: "none"
+    // activeFilterButton: "all"
   };
 
   ownerListDataTransform() {
@@ -59,19 +60,26 @@ class MapPage extends Component {
   }
 
   filterMapPointsByRegion(region) {
+    let filteredMapPoints = [];
+
+    // if (region === "all") {
+    //   return this.setState({
+    //     filteredMapPoints: this.state.mapPoints
+    //   });
+    // }
     if (region === "all") {
-      return this.setState({
-        filteredMapPoints: this.state.mapPoints
+      filteredMapPoints = this.state.mapPoints.filter((item) => {
+        return true;
+      });
+    } else {
+      filteredMapPoints = this.state.mapPoints.filter((item) => {
+        if (item.region === region) {
+          return true;
+        } else {
+          return false;
+        }
       });
     }
-
-    const filteredMapPoints = this.state.mapPoints.filter((item) => {
-      if (item.region === region) {
-        return true;
-      } else {
-        return false;
-      }
-    });
 
     this.setState({
       filteredMapPoints
@@ -79,9 +87,9 @@ class MapPage extends Component {
   }
 
   sortMapPointsByType(type) {
-    const { filteredMapPoints: temp1, ownerListOri: temp2 } = this.state;
+    const { filteredMapPoints, ownerListOri } = this.state;
     // console.log(filteredMapPoints, ownerListOri);
-    let sortedMapPoints = {};
+    let sortedMapPoints = [];
 
     // function findOwnerDetails(item) {
     //   ownerListOri.find((ownerItem) => {
@@ -90,7 +98,29 @@ class MapPage extends Component {
     //   });
     // }
 
+    sortedMapPoints = filteredMapPoints.map((mapPoint) => {
+      let owner = ownerListOri.find((owner) => {
+        return owner.colony_id === mapPoint.id;
+      });
+
+      mapPoint["next_price"] = owner.next_price;
+
+      return mapPoint;
+    });
+
     switch (type) {
+      case "alpha": {
+        sortedMapPoints.sort((a, b) => {
+          if (a.title > b.title) {
+            return 1;
+          } else if (a.title < b.title) {
+            return -1;
+          } else {
+            return 0;
+          }
+        });
+        break;
+      }
       case "priceAsc": {
         // sortedMapPoints = filteredMapPoints.sort((a, b) => {
         //   let x = ownerListOri.find((ownerItem) => {
@@ -103,19 +133,31 @@ class MapPage extends Component {
 
         //   return x > y ? 0 : 1;
         // });
-        sortedMapPoints = temp1.sort((a, b) => {
-          let x = temp2.find((c) => {
-            return c.colony_id === a.id;
-          }).next_price;
 
-          let y = temp2.find((c) => {
-            return c.colony_id === b.id;
-          }).next_price;
+        // sortedMapPoints = temp1.sort((a, b) => {
+        //   let x = temp2.find((c) => {
+        //     return c.colony_id === a.id;
+        //   }).next_price;
 
-          return x > y ? 1 : 0;
+        //   let y = temp2.find((c) => {
+        //     return c.colony_id === b.id;
+        //   }).next_price;
+
+        //   return x > y ? 1 : 0;
+        // });
+        // console.log(sortedMapPoints);
+
+        sortedMapPoints.sort((a, b) => {
+          return b.next_price - a.next_price;
         });
-        console.log(sortedMapPoints);
         break;
+      }
+      case "priceDec": {
+        sortedMapPoints.sort((a, b) => {
+          return a.next_price - b.next_price;
+        });
+      }
+      case "default": {
       }
     }
 
@@ -147,7 +189,7 @@ class MapPage extends Component {
           <Icon name="circle notched" loading />
           <Message.Content>
             <Message.Header>Loading</Message.Header>
-            Reading mars state from blockchain!
+            Reading Mars State From Blockchain!
           </Message.Content>
         </Message>
       );
@@ -178,7 +220,7 @@ class MapPage extends Component {
 
     const topOwnerList = Object.entries(ownerList)
       .sort((a, b) => {
-        return a[1].total - b[1].total;
+        return b[1].total - a[1].total;
       })
       .slice(0, 10);
 
@@ -224,6 +266,11 @@ class MapPage extends Component {
                   <Dropdown.Menu>
                     <Dropdown.Header content="Sort Cur. Selection By " />
                     <Dropdown.Divider />
+                    <Dropdown.Item
+                      onClick={this.sortMapPointsByType.bind(this, "alpha")}
+                      icon="font"
+                      text="Alphabatically"
+                    />
                     <Dropdown.Item
                       onClick={this.sortMapPointsByType.bind(this, "priceAsc")}
                       icon="arrow up"
