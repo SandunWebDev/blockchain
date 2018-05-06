@@ -15,7 +15,11 @@ import "./App.css";
 class App extends Component {
   state = {
     ethereumConnected: "pending",
-    ethereumId: "XLRFC5"
+    ethereum: {
+      username: "XLRFC5",
+      hash: "eb8ab4d26b7625f015d3aa4ab0ea55",
+      color: "pink"
+    }
   };
 
   changeConnectStatus(status) {
@@ -24,9 +28,12 @@ class App extends Component {
     });
   }
 
-  changeEthereumId(id) {
+  changeEthereumDetails(details) {
     this.setState({
-      ethereumId: id
+      ethereum: {
+        ...this.state.ethereum,
+        ...details
+      }
     });
   }
 
@@ -35,14 +42,14 @@ class App extends Component {
   }
 
   render() {
-    const { ethereumConnected, ethereumId } = this.state;
+    const { ethereumConnected, ethereum } = this.state;
 
     return (
       <div className="App">
         <Header
           connectStatus={ethereumConnected}
-          ethereumId={ethereumId}
-          changeEthereumId={this.changeEthereumId.bind(this)}
+          ethereum={ethereum}
+          changeEthereumDetails={this.changeEthereumDetails.bind(this)}
         />
         <Route exact path="/" component={HomePage} />
         <Route exact path="/how" component={HowPage} />

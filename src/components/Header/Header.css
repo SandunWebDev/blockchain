@@ -36,12 +36,13 @@
   padding: 0 20px;
 }
 
-.Header__links__connectId {
-  background: green;
-  padding: 4px 10px !important;
+.Header__links__connectUsername {
+  font-size: 0.9rem;
+  padding: 2px 8px !important;
   margin: 0 10px;
   border-radius: 5px;
   text-transform: uppercase;
+  color: black;
 }
 
 .Header__links ul img {
@@ -49,8 +50,8 @@
 }
 
 .loading {
-  animation: rotation 2s infinite linear;
-  fill: "pink";
+  /* animation: rotation 2s infinite linear;
+  fill: "pink"; */
 }
 
 @keyframes rotation {
