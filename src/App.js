@@ -18,8 +18,9 @@ class App extends Component {
     ethereum: {
       username: "vena",
       userId: "eb8ab4d26b7625f015d3aa4ab0ea7",
-      color: "pink"
-    }
+      color: "purple"
+    },
+    userColor: "red"
   };
 
   changeConnectStatus(status) {
@@ -34,6 +35,12 @@ class App extends Component {
         ...this.state.ethereum,
         ...details
       }
+    });
+  }
+
+  setCurrentUserColor(color) {
+    this.setState({
+      userColor: color
     });
   }
 

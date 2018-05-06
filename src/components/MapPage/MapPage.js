@@ -252,7 +252,7 @@ class MapPage extends Component {
       addCustomFilteredMapPoint
     } = this.state;
 
-    const { connectStatus } = this.props;
+    const { connectStatus, setCurrentUserColor } = this.props;
 
     let topOwnerList = Object.entries(ownerList);
     const excludeIndex = topOwnerList.findIndex((i) => {
