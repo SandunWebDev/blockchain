@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Divider, Button, Message, Icon, Dropdown } from "semantic-ui-react";
+import { Divider, Button, Message, Icon, Dropdown, Popup } from "semantic-ui-react";
 import Map from "../SvgMap/SvgMap";
 import ListItem from "../Common/ListItem/ListItem";
 import CardItem from "../Common/CardItem/CardItem";
@@ -229,16 +229,32 @@ class MapPage extends Component {
         <div className="pageWrapper MapPage__wrapper">
           <h1>MARKETPLACE</h1>
           {this.statusRendering()}
+
           <div className="MapPage__mapSection">
             {connectStatus === "true" ? (
               <div className="MapPage__userlist">
                 {topOwnerList.map((item, id) => {
+                  console.log(item);
                   return (
-                    <ListItem
+                    <Popup
                       key={id}
-                      number={(id < 9 ? "0" : "") + (id + 1)}
-                      name={titleCase(item[0])}
-                      color={item[1].color}
+                      trigger={
+                        <div>
+                          <ListItem
+                            number={(id < 9 ? "0" : "") + (id + 1)}
+                            name={titleCase(item[0])}
+                            color={item[1].color}
+                            onClick={() => alert("SDFsfsdf")}
+                          />
+                        </div>
+                      }
+                      content={
+                        <div>
+                          {`Colonies : ${item[1].colonies.length}`} <br /> {`Total : ${item[1].total.toFixed(2)} ETH`}
+                        </div>
+                      }
+                      on="hover"
+                      position="top left"
                     />
                   );
                 })}
