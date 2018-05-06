@@ -18,10 +18,10 @@ class CardItem extends Component {
             }}
           >
             <path
-              fill={"#ffffff"}
+              fill={"#F47C6D"}
               fillOpacity={1}
               stroke="#ffffff"
-              strokeWidth="2"
+              strokeWidth="0"
               strokeMiterlimit="10"
               d={mapPoint.individualPathOutline}
             />
@@ -92,10 +92,10 @@ class CardItem extends Component {
                   }}
                 >
                   <path
-                    fill={"#ffffff"}
+                    fill={"#F47C6D"}
                     fillOpacity={1}
                     stroke="#ffffff"
-                    strokeWidth="2"
+                    strokeWidth="0"
                     strokeMiterlimit="10"
                     d={mapPoint.individualPathOutline}
                   />

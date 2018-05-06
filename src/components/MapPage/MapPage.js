@@ -234,7 +234,6 @@ class MapPage extends Component {
             {connectStatus === "true" ? (
               <div className="MapPage__userlist">
                 {topOwnerList.map((item, id) => {
-                  console.log(item);
                   return (
                     <Popup
                       key={id}
