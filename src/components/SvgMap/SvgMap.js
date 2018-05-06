@@ -116,7 +116,65 @@ class SvgMap extends Component {
       return ownerItem.colony_id === item.id;
     });
 
-    return owner ? titleCase(owner.owner_username) + " - " + owner.next_price + "ETH" : "";
+    if (owner) {
+      if (owner.owner_id) {
+        return (
+          "Owned By " + titleCase(owner.owner_username || owner.owner_id.substr(-5)) + " - " + owner.next_price + "ETH"
+        );
+      } else {
+        return "";
+      }
+    }
+  }
+
+  getFillColor(item) {
+    const { ownerListOri, ownerList, topItemsHoveredMapPoints } = this.props;
+    const owner = ownerListOri.find((ownerItem) => {
+      return ownerItem.colony_id === item.id;
+    });
+
+    // if (!owner.owner_id) {
+    //   return "gray";
+    // } else {
+    //   return ownerList[owner.owner_id].color;
+    // }
+
+    if (topItemsHoveredMapPoints.length === 0) {
+      console.log("exiting");
+      if (!owner.owner_id) {
+        return "gray";
+      } else {
+        return ownerList[owner.owner_id].color;
+      }
+    } else {
+      console.log("firing");
+      if (topItemsHoveredMapPoints.includes(owner.colony_id)) {
+        console.log(ownerList);
+        return ownerList[owner.owner_id].color;
+      } else {
+        return "gray";
+      }
+    }
+
+    // Object.entries(ownerList).map((owner)=>{
+    //   owner[1].colonies.find((colony)=>{
+    //     colony.colony_id === item.id
+    //   })
+    // })
+  }
+
+  test(item) {
+    const { ownerListOri, ownerList, topItemsHoveredMapPoints } = this.props;
+
+    const owner = ownerListOri.find((ownerItem) => {
+      return ownerItem.colony_id === item.id;
+    });
+
+    if (topItemsHoveredMapPoints.includes(owner.colony_id)) {
+      return ownerList[owner.owner_id].color;
+    } else {
+      return "gray";
+    }
   }
 
   render() {
@@ -130,7 +188,7 @@ class SvgMap extends Component {
      *
      *  (Simply use Illustrator to easily match dimentions)
      **/
-    const { mapDimensions, mapPoints, connectStatus } = this.props;
+    const { mapDimensions, mapPoints, connectStatus, topItemsHoveredMapPoints } = this.props;
     const { selectedItem } = this.state;
 
     // Generating SVG elements for each mapPoint.
@@ -150,18 +208,30 @@ class SvgMap extends Component {
           }}
         >
           <path
-            onMouseOver={(e) => {
+            onMouseEnter={(e) => {
               // e.target.style.fillOpacity = "0.7";
-              e.target.style.fill = "red";
+              // e.target.style.fill = "red";
+              e.target.setAttribute("fill", "red");
               // this.hoverPopupToggle(e, item);
             }}
-            onMouseOut={(e) => {
+            onMouseLeave={(e) => {
               // e.target.style.fillOpacity = "1.0";
-              e.target.style.fill = connectStatus === "true" ? item.fill : "gray";
+              // e.target.style.fill = connectStatus === "true" ? this.getFillColor.bind(this, item)() : "gray";
+              let x = connectStatus === "true" ? this.getFillColor.bind(this, item)() : "gray";
+              this.hoverPopupHide();
+              e.target.setAttribute("fill", x);
+
+              // e.target.style.fill =
+              //   connectStatus === "true"
+              //     ? topItemsHoveredMapPoints.length > 0
+              //       ? this.test.bind(this, item)()
+              //       : this.getFillColor.bind(this, item)()
+              //     : "gray";
               // this.hoverPopupHide();
             }}
             ref="boundry"
-            fill={connectStatus === "true" ? item.fill : "gray"}
+            // fill={connectStatus === "true" ? item.fill : "gray"}
+            fill={connectStatus === "true" ? this.getFillColor.bind(this, item)() : "gray"}
             fillOpacity={1}
             stroke="#000000"
             strokeWidth="2"
@@ -219,7 +289,7 @@ class SvgMap extends Component {
         <div className="svgMap__hoverPopup" style={this.state.hoverPopup}>
           <div>
             <span>{selectedItem.title} </span> <br />
-            {`Owned By ${this.getOwnerDetails.bind(this, selectedItem)()}`}
+            {connectStatus === "true" ? `${this.getOwnerDetails.bind(this, selectedItem)()}` : ""}
           </div>
         </div>
         <svg

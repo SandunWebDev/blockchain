@@ -33,9 +33,12 @@ class CardItem extends Component {
         {connectStatus === "true" ? (
           <div
             className="CardItem__owner"
-            style={{ backgroundColor: this.props.ownerList[this.props.owner.owner_username].color }}
+            style={{ backgroundColor: this.props.ownerList[this.props.owner.owner_id].color }}
           >
-            OWNER : {owner.owner_username.toUpperCase()}
+            OWNER :{" "}
+            {!owner.owner_id
+              ? "NOT YET"
+              : owner.owner_username.toUpperCase() || owner.owner_id.substr(-5).toUpperCase()}
           </div>
         ) : (
           ""
@@ -104,7 +107,9 @@ class CardItem extends Component {
                 <div>
                   <p>
                     You can purchase <span>{mapPoint.title}</span> for <span>{owner.current_price} ETH </span> from{" "}
-                    <span>{titleCase(owner.owner_username)}</span>.
+                    <span>
+                      {owner.owner_username.toUpperCase() || owner.owner_id.substr(-5).toUpperCase()}
+                    </span>.
                   </p>
                   <p>
                     The next price someone can purchase this country for is <span>{owner.next_price} ETH </span>
@@ -129,7 +134,7 @@ class CardItem extends Component {
                     value={owner.next_price + " ETH"}
                   />
                   <Button
-                    classsName="CardItem__footer__input"
+                    className="CardItem__footer__input"
                     icon
                     fluid
                     attached="left"

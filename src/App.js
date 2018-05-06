@@ -16,8 +16,8 @@ class App extends Component {
   state = {
     ethereumConnected: "pending",
     ethereum: {
-      username: "XLRFC5",
-      hash: "eb8ab4d26b7625f015d3aa4ab0ea55",
+      username: "vena",
+      userId: "eb8ab4d26b7625f015d3aa4ab0ea7",
       color: "pink"
     }
   };
@@ -55,7 +55,13 @@ class App extends Component {
         <Route exact path="/how" component={HowPage} />
         <Route exact path="/tos" component={TOSPage} />
         <Route exact path="/faq" component={FAQPage} />
-        <Route exact path="/dapp" component={() => <MapPage connectStatus={ethereumConnected} />} />
+        <Route
+          exact
+          path="/dapp"
+          component={() => (
+            <MapPage connectStatus={ethereumConnected} changeEthereumDetails={this.changeEthereumDetails.bind(this)} />
+          )}
+        />
         <Route exact path="/myassets" component={() => <MyAssetsPage connectStatus={ethereumConnected} />} />
         <Footer />
       </div>

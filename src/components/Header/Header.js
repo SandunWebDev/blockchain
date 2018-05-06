@@ -63,7 +63,7 @@ class Header extends Component {
                   onOpen={this.handleOpen}
                   trigger={
                     <li className="Header__links__connectUsername" style={connectUsernameStyle}>
-                      {titleCase(ethereum.username)}
+                      {ethereum.username ? titleCase(ethereum.username) : titleCase(ethereum.userId.substr(-5))}
                     </li>
                   }
                   content={
@@ -119,7 +119,7 @@ class Header extends Component {
                     </g>
                   </svg>
                 }
-                content={connectStatus === "true" ? `ONLINE ${ethereum.hash} ` : "OFFLINE"}
+                content={connectStatus === "true" ? `ONLINE ${ethereum.userId} ` : "OFFLINE"}
                 on="hover"
                 position="bottom center"
               />

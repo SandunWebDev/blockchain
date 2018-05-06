@@ -24,6 +24,7 @@ class MapPage extends Component {
     ownerList: {},
     ownerListOri: [],
     filteredMapPoints: [],
+    topItemsHoveredMapPoints: [],
     sortType: "none"
     // activeFilterButton: "all"
   };
@@ -32,13 +33,21 @@ class MapPage extends Component {
     const transformedOwnerList = {};
 
     colonyOwnerList.ownerList.forEach((item, id) => {
-      transformedOwnerList[item.owner_username] = { total: 0, color: COLOR_LIST[id], colonies: [] };
+      transformedOwnerList[item.owner_id] = {
+        total: 0,
+        color: COLOR_LIST[id],
+        username: item.owner_username,
+        colonies: []
+      };
     });
 
+    if (!transformedOwnerList[""]) {
+      transformedOwnerList[""]["color"] = "gray";
+    }
+
     colonyOwnerList.ownerList.forEach((item, id) => {
-      transformedOwnerList[item.owner_username]["total"] =
-        transformedOwnerList[item.owner_username]["total"] + item.current_price;
-      transformedOwnerList[item.owner_username]["colonies"].push({
+      transformedOwnerList[item.owner_id]["total"] = transformedOwnerList[item.owner_id]["total"] + item.current_price;
+      transformedOwnerList[item.owner_id]["colonies"].push({
         colony_id: item.colony_id,
         current_price: item.current_price,
         next_price: item.next_price
@@ -156,6 +165,7 @@ class MapPage extends Component {
         sortedMapPoints.sort((a, b) => {
           return a.next_price - b.next_price;
         });
+        break;
       }
       case "default": {
       }
@@ -206,6 +216,15 @@ class MapPage extends Component {
     }
   }
 
+  handleTopItemsHovered(item) {
+    const topItemsHoveredMapPoints = item[1].colonies.map((i) => i.colony_id);
+    this.setState({ topItemsHoveredMapPoints: topItemsHoveredMapPoints });
+  }
+
+  clearHandleTopItemsHovered(item) {
+    this.setState({ topItemsHoveredMapPoints: [] });
+  }
+
   render() {
     const {
       mainMapDimensions,
@@ -213,17 +232,22 @@ class MapPage extends Component {
       mapPoints,
       ownerList,
       ownerListOri,
-      filteredMapPoints
+      filteredMapPoints,
+      topItemsHoveredMapPoints
     } = this.state;
 
     const { connectStatus } = this.props;
 
-    const topOwnerList = Object.entries(ownerList)
+    let topOwnerList = Object.entries(ownerList);
+    const excludeIndex = topOwnerList.findIndex((i) => {
+      return i[0] == "";
+    });
+    topOwnerList.splice(excludeIndex, 1);
+    topOwnerList = topOwnerList
       .sort((a, b) => {
         return b[1].total - a[1].total;
       })
       .slice(0, 10);
-
     return (
       <div className="MapPage">
         <div className="pageWrapper MapPage__wrapper">
@@ -238,12 +262,22 @@ class MapPage extends Component {
                     <Popup
                       key={id}
                       trigger={
-                        <div>
+                        <div
+                          onMouseEnter={() => {
+                            this.handleTopItemsHovered.bind(this, item)();
+                          }}
+                          onMouseLeave={() => {
+                            this.clearHandleTopItemsHovered.bind(this)();
+                          }}
+                        >
                           <ListItem
                             number={(id < 9 ? "0" : "") + (id + 1)}
-                            name={titleCase(item[0])}
+                            name={
+                              item[1].username
+                                ? titleCase(item[1].username).toUpperCase()
+                                : titleCase(item[0].substr(-5)).toUpperCase()
+                            }
                             color={item[1].color}
-                            onClick={() => alert("SDFsfsdf")}
                           />
                         </div>
                       }
@@ -267,6 +301,8 @@ class MapPage extends Component {
                 mapPoints={mapPoints}
                 connectStatus={connectStatus}
                 ownerListOri={ownerListOri}
+                ownerList={ownerList}
+                topItemsHoveredMapPoints={topItemsHoveredMapPoints}
               />
             </div>
             <Divider horizontal>COLONIES DETAILS</Divider>

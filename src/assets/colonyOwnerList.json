@@ -3,132 +3,154 @@
     {
       "colony_id": "acidial_plantia",
       "owner_username": "moira",
+      "owner_id": "eb8ab4d26b7625f015d3aa4ab0ea1",
       "current_price": 5.265,
       "next_price": 7.265
     },
     {
       "colony_id": "planum_borrium",
       "owner_username": "tracey",
+      "owner_id": "eb8ab4d26b7625f015d3aa4ab0ea2",
       "current_price": 2.458,
       "next_price": 4.458
     },
     {
       "colony_id": "temppa_terra",
       "owner_username": "gordon",
+      "owner_id": "eb8ab4d26b7625f015d3aa4ab0ea3",
       "current_price": 10.785,
       "next_price": 12.785
     },
     {
       "colony_id": "chryse_plantia",
       "owner_username": "luke",
+      "owner_id": "eb8ab4d26b7625f015d3aa4ab0ea4",
       "current_price": 2.458,
       "next_price": 4.458
     },
     {
       "colony_id": "xanthe terra",
       "owner_username": "jennie",
+      "owner_id": "eb8ab4d26b7625f015d3aa4ab0ea42",
       "current_price": 1.784,
       "next_price": 3.784
     },
     {
       "colony_id": "margatifier_terrot",
       "owner_username": "nana",
+      "owner_id": "eb8ab4d26b7625f015d3aa4ab0ea5",
       "current_price": 5.456,
       "next_price": 7.456
     },
     {
       "colony_id": "arabia_terror",
       "owner_username": "rozella",
+      "owner_id": "eb8ab4d26b7625f015d3aa4ab0ea6",
       "current_price": 6.778,
       "next_price": 8.778
     },
     {
       "colony_id": "aracadia_plantia",
       "owner_username": "vena",
+      "owner_id": "eb8ab4d26b7625f015d3aa4ab0ea7",
       "current_price": 3.154,
       "next_price": 5.154
     },
     {
       "colony_id": "utopia_plantia",
       "owner_username": "stefanie",
+      "owner_id": "eb8ab4d26b7625f015d3aa4ab0ea8",
       "current_price": 9.125,
       "next_price": 11.125
     },
     {
       "colony_id": "iidis_plantia",
       "owner_username": "jeanna",
+      "owner_id": "eb8ab4d26b7625f015d3aa4ab0ea9",
       "current_price": 5.482,
       "next_price": 7.482
     },
     {
       "colony_id": "sabea_terror",
       "owner_username": "nana",
+      "owner_id": "eb8ab4d26b7625f015d3aa4ab0ea10",
       "current_price": 3.145,
       "next_price": 5.145
     },
     {
       "colony_id": "simmeria_terror",
       "owner_username": "nana",
+      "owner_id": "eb8ab4d26b7625f015d3aa4ab0ea10",
       "current_price": 2.487,
       "next_price": 4.487
     },
     {
       "colony_id": "elysium_plantia",
       "owner_username": "margarett",
+      "owner_id": "eb8ab4d26b7625f015d3aa4ab0ea12",
       "current_price": 4.579,
       "next_price": 6.579
     },
     {
       "colony_id": "hesparia_planum",
       "owner_username": "guillermina",
+      "owner_id": "eb8ab4d26b7625f015d3aa4ab0ea13",
       "current_price": 5.149,
       "next_price": 7.149
     },
     {
       "colony_id": "pramothi_terra",
       "owner_username": "aleisha",
+      "owner_id": "eb8ab4d26b7625f015d3aa4ab0ea14",
       "current_price": 9.574,
       "next_price": 11.574
     },
     {
       "colony_id": "tyrhenna_terrot",
-      "owner_username": "fernanda",
+      "owner_username": "",
+      "owner_id": "eb8ab4d26b7625f015d3aa4ab0ea15",
       "current_price": 5.641,
       "next_price": 7.641
     },
     {
       "colony_id": "dedalia_planum",
       "owner_username": "telma",
+      "owner_id": "eb8ab4d26b7625f015d3aa4ab0ea18",
       "current_price": 10.658,
       "next_price": 12.658
     },
     {
       "colony_id": "sirenium_terra",
-      "owner_username": "thaddeus",
+      "owner_username": "",
+      "owner_id": "",
       "current_price": 1.568,
       "next_price": 3.568
     },
     {
       "colony_id": "arctic_terra",
       "owner_username": "telma",
+      "owner_id": "eb8ab4d26b7625f015d3aa4ab0ea18",
       "current_price": 7.512,
       "next_price": 9.512
     },
     {
       "colony_id": "saractic_terra",
       "owner_username": "telma",
+      "owner_id": "eb8ab4d26b7625f015d3aa4ab0ea18",
       "current_price": 2.157,
       "next_price": 4.157
     },
     {
       "colony_id": "amazonis_plantia",
       "owner_username": "telma",
+      "owner_id": "eb8ab4d26b7625f015d3aa4ab0ea18",
       "current_price": 3.482,
       "next_price": 5.482
     },
     {
       "colony_id": "lunae_planum",
-      "owner_username": "dania",
+      "owner_username": "",
+      "owner_id": "",
       "current_price": 5.158,
       "next_price": 7.158
     }
