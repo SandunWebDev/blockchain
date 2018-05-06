@@ -42,10 +42,15 @@
   margin: 30px;
 }
 
+.coloniesSection__customSelectedLabels {
+  margin: 10px auto;
+}
+
 .coloniesSection__cards {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 @media screen and (max-width: 750px) {

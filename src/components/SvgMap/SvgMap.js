@@ -140,14 +140,12 @@ class SvgMap extends Component {
     // }
 
     if (topItemsHoveredMapPoints.length === 0) {
-      console.log("exiting");
       if (!owner.owner_id) {
         return "gray";
       } else {
         return ownerList[owner.owner_id].color;
       }
     } else {
-      console.log("firing");
       if (topItemsHoveredMapPoints.includes(owner.colony_id)) {
         console.log(ownerList);
         return ownerList[owner.owner_id].color;
@@ -163,19 +161,19 @@ class SvgMap extends Component {
     // })
   }
 
-  test(item) {
-    const { ownerListOri, ownerList, topItemsHoveredMapPoints } = this.props;
+  // test(item) {
+  //   const { ownerListOri, ownerList, topItemsHoveredMapPoints } = this.props;
 
-    const owner = ownerListOri.find((ownerItem) => {
-      return ownerItem.colony_id === item.id;
-    });
+  //   const owner = ownerListOri.find((ownerItem) => {
+  //     return ownerItem.colony_id === item.id;
+  //   });
 
-    if (topItemsHoveredMapPoints.includes(owner.colony_id)) {
-      return ownerList[owner.owner_id].color;
-    } else {
-      return "gray";
-    }
-  }
+  //   if (topItemsHoveredMapPoints.includes(owner.colony_id)) {
+  //     return ownerList[owner.owner_id].color;
+  //   } else {
+  //     return "gray";
+  //   }
+  // }
 
   render() {
     /** Getting mapDimensions and mapPoints from recived props.
@@ -188,7 +186,7 @@ class SvgMap extends Component {
      *
      *  (Simply use Illustrator to easily match dimentions)
      **/
-    const { mapDimensions, mapPoints, connectStatus, topItemsHoveredMapPoints } = this.props;
+    const { mapDimensions, mapPoints, connectStatus, topItemsHoveredMapPoints, addCustomFilteredMapPoint } = this.props;
     const { selectedItem } = this.state;
 
     // Generating SVG elements for each mapPoint.
@@ -198,7 +196,8 @@ class SvgMap extends Component {
           id={item.id}
           key={id}
           onClick={(e) => {
-            this.popupToggle(e, item);
+            // this.popupToggle(e, item);
+            addCustomFilteredMapPoint(item);
           }}
           onMouseMove={(e) => {
             this.hoverPopupToggle(e, item);

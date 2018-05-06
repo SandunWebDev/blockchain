@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Divider, Button, Message, Icon, Dropdown, Popup } from "semantic-ui-react";
+import { Divider, Button, Message, Icon, Dropdown, Popup, Label } from "semantic-ui-react";
 import Map from "../SvgMap/SvgMap";
 import ListItem from "../Common/ListItem/ListItem";
 import CardItem from "../Common/CardItem/CardItem";
@@ -24,6 +24,7 @@ class MapPage extends Component {
     ownerList: {},
     ownerListOri: [],
     filteredMapPoints: [],
+    customFilteredMapPoints: [],
     topItemsHoveredMapPoints: [],
     sortType: "none"
     // activeFilterButton: "all"
@@ -225,6 +226,19 @@ class MapPage extends Component {
     this.setState({ topItemsHoveredMapPoints: [] });
   }
 
+  addCustomFilteredMapPoint(point) {
+    if (
+      !this.state.customFilteredMapPoints.find((i) => {
+        return i.title === point.title;
+      })
+    ) {
+      const customFilteredMapPoints = [...this.state.customFilteredMapPoints, point];
+      this.setState({
+        customFilteredMapPoints: customFilteredMapPoints
+      });
+    }
+  }
+
   render() {
     const {
       mainMapDimensions,
@@ -233,7 +247,9 @@ class MapPage extends Component {
       ownerList,
       ownerListOri,
       filteredMapPoints,
-      topItemsHoveredMapPoints
+      customFilteredMapPoints,
+      topItemsHoveredMapPoints,
+      addCustomFilteredMapPoint
     } = this.state;
 
     const { connectStatus } = this.props;
@@ -248,6 +264,9 @@ class MapPage extends Component {
         return b[1].total - a[1].total;
       })
       .slice(0, 10);
+
+    const selectedMapPoints = customFilteredMapPoints.length > 0 ? customFilteredMapPoints : filteredMapPoints;
+
     return (
       <div className="MapPage">
         <div className="pageWrapper MapPage__wrapper">
@@ -303,6 +322,7 @@ class MapPage extends Component {
                 ownerListOri={ownerListOri}
                 ownerList={ownerList}
                 topItemsHoveredMapPoints={topItemsHoveredMapPoints}
+                addCustomFilteredMapPoint={this.addCustomFilteredMapPoint.bind(this)}
               />
             </div>
             <Divider horizontal>COLONIES DETAILS</Divider>
@@ -339,8 +359,33 @@ class MapPage extends Component {
               </Button.Group>
             </div>
 
+            {customFilteredMapPoints.length > 0 ? (
+              <div className="coloniesSection__customSelectedLabels">
+                {customFilteredMapPoints.map((item, id) => {
+                  return (
+                    <Label key={id} as="a">
+                      {item.title}
+                      <Icon
+                        name="delete"
+                        onClick={() => {
+                          const result = [...this.state.customFilteredMapPoints];
+                          result.splice(id, 1);
+
+                          this.setState({
+                            customFilteredMapPoints: result
+                          });
+                        }}
+                      />
+                    </Label>
+                  );
+                })}
+              </div>
+            ) : (
+              ""
+            )}
+
             <div className="coloniesSection__cards">
-              {filteredMapPoints.map((item, id) => {
+              {selectedMapPoints.map((item, id) => {
                 return (
                   <CardItem
                     key={id}

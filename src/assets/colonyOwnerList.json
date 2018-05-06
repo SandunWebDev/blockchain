@@ -37,8 +37,8 @@
     },
     {
       "colony_id": "margatifier_terrot",
-      "owner_username": "nana",
-      "owner_id": "eb8ab4d26b7625f015d3aa4ab0ea5",
+      "owner_username": "",
+      "owner_id": "",
       "current_price": 5.456,
       "next_price": 7.456
     },
@@ -107,7 +107,7 @@
     },
     {
       "colony_id": "tyrhenna_terrot",
-      "owner_username": "",
+      "owner_username": "gayan",
       "owner_id": "eb8ab4d26b7625f015d3aa4ab0ea15",
       "current_price": 5.641,
       "next_price": 7.641
