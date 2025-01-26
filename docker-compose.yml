@@ -1,0 +1,8 @@
+services:
+  crypto_mars:
+    build: .
+    image: crypto_mars
+    container_name: crypto_mars
+    restart: unless-stopped
+    ports:
+      - "80:80"
